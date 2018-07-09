@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="zh-CN" ng-app="APP">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0,viewport-fit=cover">
+		<title>title</title>
+		<link rel="stylesheet" href="/dist/<%= G.dist %>/main.css?_=<%= G.time %>">
+		<script type="text/javascript">
+			window.$G = <%- JSON.stringify(G) %>;
+		</script>
+	</head>
+
+	<body>
+		<div id="app" class="g-app"></div>
+		<script type="text/javascript" src="/lib/vendor.js"></script>
+		<script type="text/javascript" src="/dist/<%= G.dist %>/main.js?_=<%= G.time %>"></script>
+	</body>
+</html>

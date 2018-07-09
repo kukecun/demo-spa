@@ -1,0 +1,27 @@
+.menu-top{
+
+  .el-menu--horizontal>.el-menu-item{ height: 72px; line-height: 72px; padding: 0;
+
+    a{ display: block; height: 100%; padding: 0 25px; color: #fff;}
+
+    &:hover,&:active{ background: rgba(0,0,0,.15);}
+  }
+
+  .el-submenu__title{ padding: 0;}
+  .el-menu--horizontal>.el-menu-item.is-active{
+    border: none;
+    background: rgba(0,0,0,.63);
+  }
+  
+  .el-menu{ background: #333741;}
+}
+
+.menu-aside{
+
+  .el-submenu__title{ padding: 0!important; font-size: 14px;}
+  
+  .el-menu-item{ padding: 0!important; font-size: 14px;
+    a{ display: block; font-size: 14px;}
+    .router-link-active{ display:block;}
+  }
+}

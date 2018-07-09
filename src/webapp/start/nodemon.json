@@ -1,0 +1,8 @@
+{
+	"restartable": "rs",
+	"ignoreRoot": ["!node_modules"],
+	"verbose": true,
+	"watch": ["../../node/*"],
+	"stdin": true,
+	"stdout": true
+}
