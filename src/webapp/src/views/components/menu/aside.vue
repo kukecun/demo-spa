@@ -15,7 +15,7 @@ export default {
   name: 'treeMenu',
   data () {
     return {
-      activeType: "svgCollectionAdd",
+      
     };
   },
   props: ['menuList', 'openedsType'],
@@ -24,7 +24,9 @@ export default {
     AsideList,
   },
   computed: {
-
+    activeType(){
+      return this.$store.getters['menu/menuTypeAside'].name;
+    },
   },
   methods: {
   },

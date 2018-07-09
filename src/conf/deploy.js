@@ -35,7 +35,13 @@ module.exports = {
 				host: '10.200.180.78',
 				port: 8093,
 				portal: 'berth.appdev.carfree.com.cn'
-			}
+			},
+
+			"5": {
+				host: '127.0.0.1',
+				port: 8002,
+				portal: 'dev.berth.com:8002'
+			},
 		},
 
 		// web端请求

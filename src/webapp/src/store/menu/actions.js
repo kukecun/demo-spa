@@ -88,4 +88,15 @@ export default {
 			},
 		});
 	},
+
+	// 左侧菜单
+	menuTypeAside({commit, dispatch}, payload) {
+
+		commit({
+			type: types.MENUTYPEASIDE,
+			menuTypeAside: {
+				name: payload.name
+			},
+		});
+	}
 }

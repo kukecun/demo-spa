@@ -18,10 +18,13 @@
 
 .menu-aside{
 
-  .el-submenu__title{ padding: 0!important; font-size: 14px;}
-  
-  .el-menu-item{ padding: 0!important; font-size: 14px;
-    a{ display: block; font-size: 14px;}
-    .router-link-active{ display:block;}
+  .el-menu-item, .el-submenu__title{ padding: 0!important; font-size: 14px; background: #333741;
+    &:hover,&:active{ background: rgba(0,0,0,.8);}
+
+    &.is-active{ background: #7E8AD8;}
+
+    a,span{ padding-left:20px!important; color: #fff;
+      display: block; width: 100%; height: 100%; box-sizing: border-box;
+    }
   }
 }

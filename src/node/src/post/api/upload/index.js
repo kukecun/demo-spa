@@ -18,6 +18,8 @@ module.exports.start = function(app) {
   let cpUpload = upload.fields([{ name: 'file', maxCount: 10 }]);
   
 	app.post("/api/upload/file", cpUpload, function(req, res){
+    console.log(">>>>>>>>>>>>>>>>>>>>>>>")
+    console.log(req.files)
 		res.json(req.files);
 	});
 }

@@ -4,7 +4,6 @@ var express 							= require("express"),
 		path 									= require("path"),
 		webpack								= require('webpack'),
 		webpackDevMiddleware 	= require('webpack-dev-middleware'),
-		webpackDevServer 			= require("webpack-dev-server"),
 		webpackHotMiddleware 	= require('webpack-hot-middleware'),
 		serverBase						= require(path.join(Config.rootProject, "node/node_modules/m.server")),
 		webpackDevConfig 			= require("../build/webpack.dev.config"),
@@ -22,7 +21,11 @@ module.exports.start = function(){
 	}));
 
 	// 启动热更新
-	app.use(webpackHotMiddleware(compiler));
+	app.use(webpackHotMiddleware(compiler,{
+		log: false, 
+		path: '/__webpack_hmr', 
+		heartbeat: 10 * 1000
+	}));
 
 	// 基础配置启动
 	serverBase.start(app, express, router);

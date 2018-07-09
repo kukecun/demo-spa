@@ -2,7 +2,7 @@
 <template>
   <div class="menu-aside-list">
     <label v-for="item in menuList" :index="item.name" :key="item.name">
-      <el-menu-item v-if="item.children.length == 0">
+      <el-menu-item :default-active="activeType" :index="item.name" v-if="item.children.length == 0">
         <router-link :to="{ path: item.path }">{{item.meta.title}}</router-link>
       </el-menu-item>
 
@@ -26,7 +26,9 @@ export default {
   },
   props: ['menuList'],
   computed: {
-
+    activeType(){
+      return this.$store.getters['menu/menuTypeAside'].name;
+    },
   },
   methods: {
     
