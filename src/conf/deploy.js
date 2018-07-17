@@ -9,8 +9,8 @@ module.exports = {
 
 			"0": {
 				host: '127.0.0.1',
-				port: 8001,
-				portal: 'dev.berth.com:8001'
+				port: 8003,
+				portal: 'dev.berth.com:8003'
 			},
 
 			"1": {

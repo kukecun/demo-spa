@@ -2,7 +2,7 @@
 export default {
 
   // 配置导航
-	authorityManagement (list, original) {
+	authorityManagement (list, original, menus = []) {
 
 		let _this = this;
 	
@@ -14,14 +14,19 @@ export default {
 			list[key].meta.index = key;
 			list[key].name = original[item.path].name;
 
+			menus.push(list[key].path);
+
 			let childrenList = item.children;
 			
 			if(!!childrenList && childrenList.length > 0) {
-				_this.authorityManagement(childrenList, original[item.path].children);
+				_this.authorityManagement(childrenList, original[item.path].children, menus);
 			}
 		});
 	
-		return list;
+		return {
+			list,
+			menus
+		};
 	},
 
 	// 获取左侧菜单展开数组
@@ -85,4 +90,23 @@ export default {
 
 		return R;
 	},
+
+	is404(path, menus) {
+
+		let flag = true;
+		let len = menus.length;
+
+		for(let i=0; i<menus.length; i++) {
+			if(path == menus[i]) {
+				flag = false;
+				break;
+			}
+		}
+
+		if(/^(\/404|\/)$/.test(path)) {
+			flag = false;
+		}
+
+		return flag; 
+	}
 }

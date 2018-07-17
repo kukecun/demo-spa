@@ -1,7 +1,7 @@
 
 const arr = [
 	{
-		path: '*',
+		path: '/404',
 		name: '404',
 		meta: {
 			title: '页面不存在'

@@ -29,7 +29,11 @@ const router = new VueRouter({
   }
 });
 
-let menuMatched = [];
+// 这里保存了顶部导航切换过程中，左侧菜单默认的高亮菜单
+let saveMatched = [];
+
+// 这里保存了所有后台返回的path路径
+let saveMenus = [];
 
 router.beforeEach((to, from, next) => {
 
@@ -50,17 +54,18 @@ router.beforeEach((to, from, next) => {
 
       Cookies.remove("refresh");
   
-      await store.dispatch('menu/menuList').then( ({nav, matched}) => {
-        menuMatched = matched;
-        router.addRoutes(nav);
+      await store.dispatch('menu/menuList').then( ( res ) => {
+        saveMatched = res.matched;
+        saveMenus = res.menus;
+        router.addRoutes(res.nav);
       });
     }
 
     // 得到第一层默认高亮菜单路由name
-    let curMenu = rt.getCurMenu(menuMatched, toName);
+    let curMenu = rt.getCurMenu(saveMatched, toName);
 
     if(toName == "home") {
-      asideName = menuMatched[0].curName;
+      asideName = saveMatched[0].curName;
       next({
         name: asideName
       });
@@ -73,6 +78,14 @@ router.beforeEach((to, from, next) => {
         name: curMenu.curName
       });
     }
+
+    // 跳转404页面
+    if(rt.is404(to.path, saveMenus)) {
+      next({
+        name: '404'
+      });
+    }
+
   })();
 
   // 当前菜单顶部位置

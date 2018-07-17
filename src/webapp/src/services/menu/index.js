@@ -1,7 +1,7 @@
-import api from '../webServer';
+import api from '../nodeServer';
 
 export default {
 	menu(data){
-		return api.post('/menu', data);
+		return api.post('/api/menu', data);
 	}
 }
