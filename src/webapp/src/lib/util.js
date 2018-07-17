@@ -138,31 +138,4 @@ export default {
 		}
 		run();
 	},
-
-	// 配置导航
-	authorityManagement (list, original) {
-
-		let _this = this;
-	
-		list.forEach((item, key) => {
-			list[key].component = original[item.name].component;
-			list[key].meta = original[item.name].meta;
-			list[key].meta.index = key;
-			
-			if(!!item.children && item.children.length > 0) {
-				_this.authorityManagement(item.children, original[item.name].children);
-			}
-		});
-	
-		return list;
-	},
-
-	// 获取左侧菜单展开数组
-	getMenuAsideOpenedsType(list){
-		let R = [];
-		for(let i=0; i<list.length; i++) {
-			R.push(list[i].name);
-		}
-		return R;
-	},
 };

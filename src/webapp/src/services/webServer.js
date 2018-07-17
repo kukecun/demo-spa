@@ -40,6 +40,7 @@ const xhr = axios.create({
 
 // 响应拦截
 xhr.interceptors.response.use((res = {}) => {
+  
   try {
 
     if (res.status >= 400) {
@@ -49,18 +50,19 @@ xhr.interceptors.response.use((res = {}) => {
     }
     
     if(res.data.code < 0) {
-      VM.$message.error(res.data.msg);
+      // VM.$message.error(res.data.msg);
       
-      // 登录失效的情况下,清除token
-      if(res.data.enumCode == 10000) {
-        Cookies.remove("token");
-        if(!!Cookies.get("token")) location.reload();
-      };
+      // // 登录失效的情况下,清除token
+      // if(res.data.enumCode == 10000) {
+      //   Cookies.remove("token");
+      //   if(!!Cookies.get("token")) location.reload();
+      // };
 
-      return Promise.reject();
+      // return Promise.reject();
     }
 
     return Promise.resolve(res.data);
+
   } catch (e) {
 
     return Promise.reject(e);

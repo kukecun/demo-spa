@@ -1,7 +1,7 @@
 {
-  "name": "demo-spa",
+  "name": "berth",
   "version": "1.0.0",
-  "description": "demo",
+  "description": "berth",
   "main": "index.js",
   "scripts": {
     "dev": "webpack --progress --watch --config build/webpack.dev.config.js",

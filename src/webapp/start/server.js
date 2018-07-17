@@ -21,11 +21,7 @@ module.exports.start = function(){
 	}));
 
 	// 启动热更新
-	app.use(webpackHotMiddleware(compiler,{
-		log: false, 
-		path: '/__webpack_hmr', 
-		heartbeat: 10 * 1000
-	}));
+	app.use(webpackHotMiddleware(compiler));
 
 	// 基础配置启动
 	serverBase.start(app, express, router);

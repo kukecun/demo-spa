@@ -3,13 +3,17 @@
 import data from './data';
 
 // 停车场管理
-import svg from './svg';
+import parking from './parking';
 
-// 上线管理
-import online from './online';
+// 发布管理
+import release from './release';
+
+// 任务管理
+import task from './task';
 
 export default {
-  ...data,
-  ...svg,
-  ...online,
+  "/berth/data": data.data,
+  "/berth/parking": parking.parking,
+  "/berth/task": task.task,
+  "/berth/release": release.release,
 };

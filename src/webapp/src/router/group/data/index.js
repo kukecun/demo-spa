@@ -1,7 +1,7 @@
 import dataViews from '@/views/group/data';
 
 const data = {
-	path: '/data',
+	path: '/berth/data',
 	name: 'data',
 	meta: {
 		title: '数据总览',
@@ -9,8 +9,8 @@ const data = {
 	},
 	component: dataViews,
 	children:{
-		"dataStore": {
-			path: '/data/store',
+		"/berth/data/store": {
+			path: '/berth/data/store',
 			meta: {
 				title: '数据仓库',
 				level: 2,
@@ -18,8 +18,8 @@ const data = {
 			name: 'dataStore', 
 			component: () => import('@/views/group/data/store.vue')
 		},
-		"dataPack": {
-			path: '/data/pack',
+		"/berth/data/pack": {
+			path: '/berth/data/pack',
 			meta: {
 				title: '停车场总览',
 				level: 2,

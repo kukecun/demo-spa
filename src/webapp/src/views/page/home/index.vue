@@ -26,14 +26,20 @@
       
       <!--左侧菜单-->
       <aside class="g-aside">
-        <MenuAside :menuList="menuAside.children" :openedsType="openedsType"></MenuAside>
+        <MenuAside v-if="menuAside" :menuList="menuAside.children" :openedsType="openedsType"></MenuAside>
       </aside>
 
       <!--右侧group区-->
       <section class="g-content">
-        <UploadFile :multi="true" :fileUrl="fileUrl" :fileAccept="fileAccept"></UploadFile>
+        <UploadFile 
+        :multi="true"
+        :fileUrl="fileUrl"
+        :fileAccept="fileAccept"
+        :fileMaxLen="fileMaxLen"
+        @registerUploadFile="registerUploadFile"
+        ref="refUploadFile" ></UploadFile>
 
-        <a href="javascript:" @click="goPage">跳转路由</a>
+        <a href="javascript:" @click="goPage">跳转路由test</a>
         <router-view></router-view>
       </section>
     </div>
@@ -50,14 +56,13 @@ import UploadFile from '@/views/components/upload/file.vue';
 
 import { mapActions, mapState } from 'vuex';
 
-import testAPI from '@/services/test';
-
 export default {
 
   data () {
     return {
-      fileUrl: "/api/upload/file",
+      fileUrl: "http://10.200.179.153/file/upload",
       fileAccept: "image/png,image/jpeg,image/gif,image/jpg",
+      fileMaxLen: 5,
     };
   },
 
@@ -75,9 +80,12 @@ export default {
 
     menuAside(){
 
-      let list = this.menuList, R;
+      let list = this.menuList, R,
+          len = list.length;
 
-      for(let i=0; i<list.length; i++) {
+      if(len <= 0) return false;
+
+      for(let i=0; i<len; i++) {
         if(list[i].name == this.menuTypeName) {
           R = list[i];
           break;
@@ -102,10 +110,12 @@ export default {
       this.$router.push({name: 'dataStore'})
     },
 
+    registerUploadFile(data){
+      console.log("registerUpload>>>>>>>>>>>>>>>>>")
+      console.log(data);
+    },
   },
 
-  mounted () {
-    
-  }
+  mounted () {}
 };
 </script>
