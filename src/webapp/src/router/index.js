@@ -47,9 +47,10 @@ router.beforeEach((to, from, next) => {
   let len = matched.length;
   let asideName = len ? matched[len-1].name : "";
 
-  // 判断是否是刷新后进入的导航守卫，如果是，那么重置权限（菜单）
+  // 此异步方式可以和await结合做到序列式异步，而不需要显示的promise返回执行
   ;(async () => {
 
+    // 判断是否是刷新后进入的导航守卫，如果是，那么重置权限（菜单）
     if(Cookies.get("refresh")) {
 
       Cookies.remove("refresh");
@@ -85,8 +86,10 @@ router.beforeEach((to, from, next) => {
         name: '404'
       });
     }
-
+    
   })();
+
+  if(to.name == name) return;
 
   // 当前菜单顶部位置
   store.dispatch('menu/menuTypeInfo', {
@@ -102,7 +105,7 @@ router.beforeEach((to, from, next) => {
   // 设置标题
   Util.title(to.meta.title);
 
-  if(name != toName) next();
+  next();
 });
 
 export default router;

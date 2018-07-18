@@ -46,28 +46,46 @@ export default {
 
 		list.forEach(function(item){
 
-			let r = {};
+			let r = {
+				name: null,
+				curName: null
+			};
 
 			if(item.hidden == 0) {
 
-				let itemName = item.name;
-
-				r.name = itemName;
+				r.name = item.name;
 
 				let len = item.children.length;
-
+				
+				// 如果有子级，那么进入递归状态。获取最后一层，第一个菜单
 				if(!!len) {
 
-					for(let i=0; i<len; i++) {
-						if(item.children[i].hidden == 0) {
-							r.curName = item.children[i].name;
-							R.push(r);
-							break;
+					let findCurName = (item) => {
+
+						if(r.curName) return;
+
+						let len = item.length;
+
+						for(let i=0; i<len; i++) {
+
+							if(item[i].children.length > 0) {
+
+								findCurName(item[i].children);
+								break;
+
+							} else {
+
+								if(item[i].hidden == 0) {
+									r.curName = item[i].name;
+									R.push(r);
+									break;
+								}
+							}
 						}
 					}
-
+					findCurName(item.children);
 				} else {
-					r.curName = itemName;
+					r.curName = item.name;
 					R.push(r);
 				}
 			}

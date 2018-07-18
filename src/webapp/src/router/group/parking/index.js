@@ -16,7 +16,18 @@ const parking = {
 				level: 2,
 			},
 			name: 'parkingCollection', 
-			component: () => import('@/views/group/parking/collection')
+			component: () => import('@/views/group/parking/collection'),
+			children: {
+				"/berth/parking/collection2": {
+					path: '/berth/parking/collection',
+					meta: {
+						title: '采集筛选2',
+						level: 3,
+					},
+					name: 'parkingCollection', 
+					component: () => import('@/views/group/parking/collection'),
+				}
+			}
 		},
 		"/berth/parking/sketch": {
 			path: '/berth/parking/sketch',

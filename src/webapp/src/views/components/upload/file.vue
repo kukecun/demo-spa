@@ -96,8 +96,6 @@ export default {
       // 生成唯一标识符
       let id = new Date().getTime();
 
-      console.log(file)
-
       fd.append("file", file);
       fd.append("id", id);
 
