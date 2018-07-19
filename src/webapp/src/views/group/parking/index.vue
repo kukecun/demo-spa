@@ -3,7 +3,6 @@
 </style>
 <template>
   <div class="page-parking">
-    page-parking
     <router-view></router-view>
   </div>
 </template>

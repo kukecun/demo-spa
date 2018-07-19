@@ -1,6 +1,5 @@
 <template>
   <div class="page-svg-collection">
-    page-svg-collection
     <router-view></router-view>
   </div>
 </template>
@@ -27,7 +26,7 @@ export default {
     
   },
   mounted () {
-    
+
   }
 };
 </script>

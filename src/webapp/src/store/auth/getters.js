@@ -1,4 +1,4 @@
 export default {
-	authenticated: state => state.authenticated,
+	userInfo: state => state.userInfo,
 };
   

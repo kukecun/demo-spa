@@ -9,9 +9,18 @@
     // 头部
     .g-header{ height: 72px; background: #333741;
 
-      .g-logo{ float: left; width: 270px; height: 72px; background: url($imgPath+'/logo.png') no-repeat 20px 20px;}
+      .logo{ float: left; width: 270px; height: 72px; background: url($imgPath+'/logo.png') no-repeat 20px 20px;}
 
-      .g-nav{ float: left;}
+      .nav{ float: left;}
+
+      .userinfo{ float: right;
+        .el-dropdown{ margin-right:37px; margin-top: 24px;
+          .username{ display: inline-block; height: 25px; line-height: 25px; color: #fff; font-size: 16px; 
+            padding:0 20px 0 35px; cursor: pointer;
+            background: url($imgPath+'/userface.png') no-repeat left top;
+          }
+        }
+      }
     }
 
     // 内容区

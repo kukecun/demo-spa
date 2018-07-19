@@ -18,14 +18,32 @@ const parking = {
 			name: 'parkingCollection', 
 			component: () => import('@/views/group/parking/collection'),
 			children: {
-				"/berth/parking/collection2": {
-					path: '/berth/parking/collection',
+				"/berth/parking/collection/list": {
+					path: '/berth/parking/collection/list',
 					meta: {
-						title: '采集筛选2',
+						title: '采集筛选',
 						level: 3,
 					},
-					name: 'parkingCollection', 
-					component: () => import('@/views/group/parking/collection'),
+					name: 'parkingCollectionList', 
+					component: () => import('@/views/group/parking/collection/list.vue'),
+				},
+				"/berth/parking/collection/add": {
+					path: '/berth/parking/collection/add',
+					meta: {
+						title: '新增停车场',
+						level: 3,
+					},
+					name: 'parkingCollectionAdd', 
+					component: () => import('@/views/group/parking/collection/add.vue'),
+				},
+				"/berth/parking/collection/detail": {
+					path: '/berth/parking/collection/detail',
+					meta: {
+						title: '停车场信息详情',
+						level: 3,
+					},
+					name: 'parkingCollectionDetail', 
+					component: () => import('@/views/group/parking/collection/detail.vue'),
 				}
 			}
 		},

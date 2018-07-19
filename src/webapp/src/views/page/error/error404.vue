@@ -4,6 +4,7 @@
 <template>
   <div class="page-error">
     404
+    <a href="/">刷新</a>
   </div>
 </template>
 <script>

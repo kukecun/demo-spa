@@ -3,8 +3,11 @@ import qs from 'qs';
 import vm from './index';
 import Cookies from "js-cookie";
 
-// 获取VUE对象
-let VM = vm.getVM();
+let VM = {};
+
+setTimeout(() => {
+  VM = vm.getVM();
+});
 
 // axios 中文使用说明
 // https://www.kancloud.cn/yunye/axios/234845
@@ -30,7 +33,7 @@ const xhr = axios.create({
 
 // 表示跨域请求时是否需要使用凭证
 // 设置请求允许携带cookie
-//xhr.defaults.withCredentials = true;
+xhr.defaults.withCredentials = true;
 
 // 请求拦截
 // api.interceptors.request.use(
@@ -48,17 +51,24 @@ xhr.interceptors.response.use((res = {}) => {
       console.log(">>>>>>>>>>>>"+res.data);
       return Promise.reject();
     }
-    
-    if(res.data.code < 0) {
+
+    if(res.data.code == 2) {
+      window.location.href = $G.webLogin+"?target="+location.href;
+      return Promise.reject();
+
       // VM.$message.error(res.data.msg);
-      
       // // 登录失效的情况下,清除token
       // if(res.data.enumCode == 10000) {
       //   Cookies.remove("token");
       //   if(!!Cookies.get("token")) location.reload();
       // };
-
       // return Promise.reject();
+    }
+    
+    if(res.data.code == 3) {
+      let VM = vm.getVM();
+      VM.$router.push({ name: '404'});
+      return;
     }
 
     return Promise.resolve(res.data);

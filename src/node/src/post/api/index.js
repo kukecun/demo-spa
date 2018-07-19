@@ -1,10 +1,10 @@
 
-const test = require("./test");
+const menu = require("./menu");
 const upload = require("./upload");
 
 module.exports.start = function(app) {
 
-	test.start(app);
+	menu.start(app);
 
 	upload.start(app);
 }

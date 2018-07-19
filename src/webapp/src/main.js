@@ -6,6 +6,7 @@ import store from './store';
 import services from './services';
 import App from './app.vue';
 import 'element-ui/lib/theme-chalk/index.css';
+import "@/styles/iconfont/iconfont.css";
 
 import reset from './lib/reset.rem';
 reset.init();

@@ -7,6 +7,6 @@ export default {
   },
 
   getVM(){
-    return this.VM
+    return this.VM;
   }
 };

@@ -1,7 +1,7 @@
 import * as types from '../types';
 
 export default {
-  [types.LOGIN](state, payload) {
-    state.authenticated = payload.token;
+  [types.USERINFO](state, payload) {
+    state.userInfo = payload.userInfo;
   },
 };

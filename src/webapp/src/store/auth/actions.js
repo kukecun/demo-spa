@@ -1,10 +1,12 @@
 import * as types from '../types';
 
 export default {
-  login({commit, dispatch}) {
+	
+  userInfo({commit, dispatch}) {
+
 		commit({
-			type: types.LOGIN,
-			token: new Date().getTime(),
+			type: types.USERINFO,
+			userInfo: new Date().getTime(),
 		});
-	}
+	},
 }

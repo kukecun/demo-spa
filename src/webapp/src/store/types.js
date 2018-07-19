@@ -1,6 +1,5 @@
 
-export const LOGIN = 'LOGIN';
-export const LOGOUT = 'LOGOUT';
+export const USERINFO = 'USERINFO';
 
 export const MENULIST = 'MENULIST';
 export const MENUTYPEINFO = 'MENUTYPEINFO';
@@ -8,10 +7,8 @@ export const MENUTYPEASIDE = 'MENUTYPEASIDE';
 
 export default {
 
-  // 登录
-  LOGIN,
-  // 登出
-  LOGOUT,
+  // 用户信息
+  USERINFO,
 
   // 获取菜单
   MENULIST,

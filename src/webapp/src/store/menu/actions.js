@@ -10,7 +10,7 @@ import Home from '@/router/home';
 import Group from '@/router/group';
 
 // 获取菜单
-import menuAPI from '@/services/menu';
+import menuAPI from '@/services/test';
 
 export default {
 
@@ -21,8 +21,11 @@ export default {
 			menuAPI.menu({
 				
 			}).then( res => {
+
+				if(!!!res.data) reject(false);
 				
 				// 加入过滤后的导航
+				//let filterData = rt.authorityManagement(JSON.parse(res.data), Group);
 				let filterData = rt.authorityManagement(res.data, Group);
 				let navData = filterData.list;
 				let menus = filterData.menus;

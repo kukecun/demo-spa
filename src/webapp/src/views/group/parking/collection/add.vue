@@ -1,6 +1,6 @@
 <template>
   <div class="page-svg-collection">
-    page-svg-collection add
+    page-collection-add
   </div>
 </template>
 <script>

@@ -10,15 +10,24 @@
     <div class="g-header">
 
       <!--logo-->
-      <div class="g-logo"></div>
+      <div class="logo"></div>
 
       <!--导航-->
-      <nav class="g-nav menu-top">
+      <nav class="nav menu-top">
         <MenuTop :menuList="menuList"></MenuTop>
       </nav>
 
       <!--个人信息-->
-      
+      <div class="userinfo">
+        <el-dropdown trigger="click">
+          <span class="username">
+            用户名
+          </span>
+          <el-dropdown-menu slot="dropdown">
+            <el-dropdown-item><span @click="loginOut">退出登录</span></el-dropdown-item>
+          </el-dropdown-menu>
+        </el-dropdown>
+      </div>
     </div>
     
     <!--主内容区-->
@@ -39,7 +48,7 @@
         @registerUploadFile="registerUploadFile"
         ref="refUploadFile" ></UploadFile>
 
-        <a href="javascript:" @click="goPage">跳转路由test</a>
+        <a href="javascript:" @click="goPage">跳转路由</a>
         <router-view></router-view>
       </section>
     </div>
@@ -55,6 +64,8 @@ import MenuAside from '@/views/components/menu/aside.vue';
 import UploadFile from '@/views/components/upload/file.vue';
 
 import { mapActions, mapState } from 'vuex';
+
+import Cookies from 'js-cookie';
 
 export default {
 
@@ -114,8 +125,15 @@ export default {
       console.log("registerUpload>>>>>>>>>>>>>>>>>")
       console.log(data);
     },
+
+    loginOut(){
+      Cookies.remove('token', { path: '/', domain: 'appdev.carfree.com.cn' });
+      location.reload(true);
+    },
   },
 
-  mounted () {}
+  mounted () {
+    
+  }
 };
 </script>
